@@ -15,4 +15,7 @@ AWS cli. e.g.
 
 ## Running
 
-' pipenv run "python Valhalla/valhalla.py"'
+' pipenv run "python Valhalla/valhalla.py <command> <--project=PROJECT>"'
+
+*command* is list, start, or stop
+*project* is optional

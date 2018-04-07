@@ -92,9 +92,22 @@ def create_snapshots(project):
     instances = filter_instances(project)
 
     for i in instances:
+        print("Stopping {0}...".format(i.id))  #informs users what is goin on
+
+        i.stop()
+        i.wait_until_stopped()  #waits until instance stopped before proceeding
+
         for v in i.volumes.all():
-            print("Creating snapshot of {0}".format(v.id))
+            print("  Creating snapshot of {0}".format(v.id))
             v.create_snapshot(Description="Created by Valhalla")
+
+        print("Starting {0}...".format(i.id))
+
+        i.start()    #restarts instance once snapshot is started
+        i.wait_until_running() #so you don't shutdown all instances at once
+
+    print("Job's done!")
+
     return
 
 

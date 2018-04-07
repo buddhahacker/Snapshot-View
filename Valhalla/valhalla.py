@@ -33,7 +33,7 @@ def snapshots():
 @click.option('--project', default=None,
     help="only snapshots for project(tag Project:<name>)")
 
-def list_volumes(project):
+def list_snapshots(project):
     "List EC2 snapshots"
 
     instances = filter_instances(project)
